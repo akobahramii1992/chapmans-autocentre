@@ -17,7 +17,18 @@ const cars = [
 function Header() {
   return (
     <header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 20, borderBottom: '1px solid #eee', background: '#fff' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+   <div
+  style={{
+    fontFamily: 'Arial, sans-serif',
+    minHeight: '100vh',
+    backgroundImage: 'url("https://images.unsplash.com/photo-1503376780353-7e6692767b70")',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    padding: '20px',
+    backdropFilter: 'blur(3px)'
+  }}
+>
         <img src={LOGO_PATH} alt="Chapmans logo" style={{ width: 80, height: 80, objectFit: 'contain' }} />
         <div>
           <div style={{ fontSize: 18, fontWeight: 700 }}>Chapmans AutoCentre</div>
