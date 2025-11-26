@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import VehicleList from "./VehicleList";  // <-- Import the new sliders
 
 const PHONE = "07724540230";
 const ADDRESS = "68 Bayton Road, Exhall, Coventry, CV7 9EJ";
@@ -42,7 +43,6 @@ function Header() {
 function HeroSlider() {
   const [current, setCurrent] = useState(0);
 
-  // Auto slide every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent(prev => (prev + 1) % HERO_CARS.length);
@@ -148,6 +148,10 @@ function App() {
       <Header />
       <main style={{ maxWidth: 1200, margin: '24px auto', padding: '0 16px' }}>
         <HeroSlider />
+
+        {/* <-- NEW 3-CAR SLIDERS COMPONENT */}
+        <VehicleList />
+
         <LatestCarsSection />
         <AutoTraderButton />
         <ContactSection />
