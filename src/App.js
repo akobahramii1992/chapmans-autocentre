@@ -1,75 +1,128 @@
 import React from "react";
 
+// Your AutoTrader link
+const AUTOTRADER_URL = "https://www.autotrader.co.uk/dealers/warwickshire/coventry/chapmans-autocentre-10035203?channel=vans";
+
+// Logo
+const LOGO_URL = "https://i.postimg.cc/xT5HwZWp/Logo.jpg";
+
+// Sample modern car images
+const CAR_IMAGES = [
+  "https://images.unsplash.com/photo-1502877338535-766e1452684a",
+  "https://images.unsplash.com/photo-1503376780353-7e6692767b70",
+  "https://images.unsplash.com/photo-1511919884226-fd3cad34687c",
+];
+
 function App() {
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>Chapmans Autocentre</h1>
-      <p style={styles.subtitle}>Quality Used Cars in Coventry</p>
+    <div style={styles.body}>
+      {/* Header */}
+      <header style={styles.header}>
+        <img src={LOGO_URL} alt="Chapmans AutoCentre Logo" style={styles.logo} />
+        <div>
+          <h1 style={styles.title}>Chapmans AutoCentre</h1>
+          <p style={styles.subtitle}>Quality Used Cars in Coventry</p>
+        </div>
+      </header>
 
-      <div style={styles.gallery}>
-        <img
-          src="https://images.unsplash.com/photo-1502877338535-766e1452684a"
-          alt="Car 1"
-          style={styles.image}
-        />
-        <img
-          src="https://images.unsplash.com/photo-1503376780353-7e6692767b70"
-          alt="Car 2"
-          style={styles.image}
-        />
-        <img
-          src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c"
-          alt="Car 3"
-          style={styles.image}
-        />
+      {/* Car Gallery */}
+      <section style={styles.gallery}>
+        {CAR_IMAGES.map((url, index) => (
+          <div key={index} style={styles.card}>
+            <img src={url} alt={`Car ${index + 1}`} style={styles.carImage} />
+          </div>
+        ))}
+      </section>
+
+      {/* AutoTrader Button */}
+      <div style={styles.buttonContainer}>
+        <a href={AUTOTRADER_URL} target="_blank" rel="noopener noreferrer" style={styles.button}>
+          View All Cars on AutoTrader
+        </a>
       </div>
 
-      <a
-        href="https://www.autotrader.co.uk/dealers/warwickshire/coventry/chapmans-autocentre-10035203?channel=vans"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={styles.button}
-      >
-        View All Cars on AutoTrader
-      </a>
+      {/* Footer */}
+      <footer style={styles.footer}>
+        <p>Chapmans AutoCentre &copy; {new Date().getFullYear()} | 68 Bayton Road, Exhall, Coventry, CV7 9EJ | Call: 07724 540230</p>
+      </footer>
     </div>
   );
 }
 
 const styles = {
-  container: {
-    textAlign: "center",
-    padding: "40px",
-    fontFamily: "Arial, sans-serif",
+  body: {
+    fontFamily: "'Arial', sans-serif",
+    background: "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
+    color: "#333",
+    minHeight: "100vh",
+  },
+  header: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    padding: "20px 50px",
+    backgroundColor: "#1d3557",
+    color: "#fff",
+    gap: "20px",
+    flexWrap: "wrap",
+  },
+  logo: {
+    width: "80px",
+    height: "80px",
+    objectFit: "contain",
+    borderRadius: "10px",
+    background: "#fff",
+    padding: "5px",
   },
   title: {
-    fontSize: "42px",
-    fontWeight: "bold",
-    marginBottom: "10px",
+    margin: 0,
+    fontSize: "36px",
   },
   subtitle: {
-    fontSize: "20px",
-    marginBottom: "30px",
-    color: "#444",
+    margin: 0,
+    fontSize: "16px",
+    color: "#f1faee",
   },
   gallery: {
     display: "flex",
     justifyContent: "center",
-    gap: "15px",
-    marginBottom: "40px",
+    gap: "30px",
     flexWrap: "wrap",
+    padding: "50px 20px",
   },
-  image: {
+  card: {
+    borderRadius: "12px",
+    overflow: "hidden",
+    boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
+    transition: "transform 0.3s",
+  },
+  carImage: {
     width: "300px",
-    borderRadius: "10px",
+    height: "200px",
+    objectFit: "cover",
+    display: "block",
+  },
+  buttonContainer: {
+    textAlign: "center",
+    margin: "40px 0",
   },
   button: {
-    padding: "15px 30px",
-    backgroundColor: "#007bff",
-    color: "white",
+    backgroundColor: "#e63946",
+    color: "#fff",
+    padding: "20px 50px",
+    fontSize: "22px",
+    fontWeight: "bold",
+    borderRadius: "10px",
     textDecoration: "none",
-    borderRadius: "8px",
-    fontSize: "18px",
+    boxShadow: "0 8px 16px rgba(0,0,0,0.2)",
+    transition: "transform 0.2s",
+  },
+  footer: {
+    textAlign: "center",
+    padding: "20px",
+    backgroundColor: "#1d3557",
+    color: "#fff",
+    marginTop: "50px",
   },
 };
 
