@@ -1,6 +1,6 @@
 import React from "react";
 
-// Your AutoTrader link
+// Your dealership link (still goes to AutoTrader but button text is generic)
 const AUTOTRADER_URL = "https://www.autotrader.co.uk/dealers/warwickshire/coventry/chapmans-autocentre-10035203?channel=vans";
 
 // Logo
@@ -12,6 +12,9 @@ const CAR_IMAGES = [
   "https://images.unsplash.com/photo-1503376780353-7e6692767b70",
   "https://images.unsplash.com/photo-1511919884226-fd3cad34687c",
 ];
+
+// Background hero image (professional car-themed)
+const HERO_BACKGROUND = "https://images.unsplash.com/photo-1616573320542-ffb73db9d73d";
 
 function App() {
   return (
@@ -25,21 +28,25 @@ function App() {
         </div>
       </header>
 
-      {/* Car Gallery */}
-      <section style={styles.gallery}>
-        {CAR_IMAGES.map((url, index) => (
-          <div key={index} style={styles.card}>
-            <img src={url} alt={`Car ${index + 1}`} style={styles.carImage} />
+      {/* Hero Section with background */}
+      <section style={{ ...styles.hero, backgroundImage: `url(${HERO_BACKGROUND})` }}>
+        <div style={styles.overlay}>
+          <div style={styles.gallery}>
+            {CAR_IMAGES.map((url, index) => (
+              <div key={index} style={styles.card}>
+                <img src={url} alt={`Car ${index + 1}`} style={styles.carImage} />
+              </div>
+            ))}
           </div>
-        ))}
-      </section>
 
-      {/* AutoTrader Button */}
-      <div style={styles.buttonContainer}>
-        <a href={AUTOTRADER_URL} target="_blank" rel="noopener noreferrer" style={styles.button}>
-          View All Cars on AutoTrader
-        </a>
-      </div>
+          {/* Button */}
+          <div style={styles.buttonContainer}>
+            <a href={AUTOTRADER_URL} target="_blank" rel="noopener noreferrer" style={styles.button}>
+              See Our Full Range
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
       <footer style={styles.footer}>
@@ -52,9 +59,8 @@ function App() {
 const styles = {
   body: {
     fontFamily: "'Arial', sans-serif",
-    background: "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
+    margin: 0,
     color: "#333",
-    minHeight: "100vh",
   },
   header: {
     display: "flex",
@@ -83,17 +89,29 @@ const styles = {
     fontSize: "16px",
     color: "#f1faee",
   },
+  hero: {
+    position: "relative",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    padding: "100px 20px",
+  },
+  overlay: {
+    backgroundColor: "rgba(0,0,0,0.5)",
+    padding: "50px 20px",
+    borderRadius: "12px",
+    textAlign: "center",
+  },
   gallery: {
     display: "flex",
     justifyContent: "center",
     gap: "30px",
     flexWrap: "wrap",
-    padding: "50px 20px",
+    marginBottom: "40px",
   },
   card: {
     borderRadius: "12px",
     overflow: "hidden",
-    boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
+    boxShadow: "0 8px 20px rgba(0,0,0,0.3)",
     transition: "transform 0.3s",
   },
   carImage: {
@@ -103,8 +121,7 @@ const styles = {
     display: "block",
   },
   buttonContainer: {
-    textAlign: "center",
-    margin: "40px 0",
+    marginTop: "20px",
   },
   button: {
     backgroundColor: "#e63946",
@@ -114,7 +131,7 @@ const styles = {
     fontWeight: "bold",
     borderRadius: "10px",
     textDecoration: "none",
-    boxShadow: "0 8px 16px rgba(0,0,0,0.2)",
+    boxShadow: "0 8px 16px rgba(0,0,0,0.3)",
     transition: "transform 0.2s",
   },
   footer: {
